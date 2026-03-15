@@ -1,39 +1,39 @@
 package com.popop.lifesimulator.data.database
 
 import androidx.room.*
-import com.popop.lifesimulator.data.models.inventory.Asset
+import com.popop.lifesimulator.data.database.entity.AssetEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AssetDao {
-    
+
     @Query("SELECT * FROM assets WHERE id = :id")
-    suspend fun getById(id: Long): Asset?
-    
+    suspend fun getById(id: String): AssetEntity?
+
     @Query("SELECT * FROM assets WHERE ownerId = :ownerId")
-    suspend fun getByOwner(ownerId: Long): List<Asset>
-    
+    suspend fun getByOwner(ownerId: String): List<AssetEntity>
+
     @Query("SELECT * FROM assets WHERE ownerId = :ownerId")
-    fun getByOwnerFlow(ownerId: Long): Flow<List<Asset>>
-    
+    fun getByOwnerFlow(ownerId: String): Flow<List<AssetEntity>>
+
     @Query("SELECT * FROM assets WHERE ownerId = :ownerId AND assetType = :type")
-    suspend fun getByType(ownerId: Long, type: String): List<Asset>
-    
+    suspend fun getByType(ownerId: String, type: String): List<AssetEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(asset: Asset): Long
-    
+    suspend fun insert(asset: AssetEntity): Long
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(assets: List<Asset>)
-    
+    suspend fun insertAll(assets: List<AssetEntity>)
+
     @Update
-    suspend fun update(asset: Asset)
-    
+    suspend fun update(asset: AssetEntity)
+
     @Delete
-    suspend fun delete(asset: Asset)
-    
+    suspend fun delete(asset: AssetEntity)
+
     @Query("UPDATE assets SET value = :value WHERE id = :id")
-    suspend fun updateValue(id: Long, value: Double)
-    
+    suspend fun updateValue(id: String, value: Long)
+
     @Query("SELECT SUM(value) FROM assets WHERE ownerId = :ownerId")
-    suspend fun getTotalValue(ownerId: Long): Double?
+    suspend fun getTotalValue(ownerId: String): Long?
 }

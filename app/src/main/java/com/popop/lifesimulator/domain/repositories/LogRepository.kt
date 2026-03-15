@@ -8,9 +8,9 @@ import kotlinx.coroutines.flow.Flow
  * Repository for game log data
  */
 class LogRepository(private val logEntryDao: LogEntryDao) {
-    val allLogs: Flow<List<LogEntryEntity>> = logEntryDao.getAll()
+    val allLogs: Flow<List<LogEntryEntity>>? = null
 
-    suspend fun getLogById(id: Long): LogEntryEntity? = logEntryDao.getById(id)
+    suspend fun getLogById(id: String): LogEntryEntity? = logEntryDao.getById(id)
 
     suspend fun insert(log: LogEntryEntity) = logEntryDao.insert(log)
 

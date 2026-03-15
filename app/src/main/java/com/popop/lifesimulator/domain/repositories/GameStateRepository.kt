@@ -1,16 +1,16 @@
 package com.popop.lifesimulator.domain.repositories
 
 import com.popop.lifesimulator.data.database.dao.GameStateDao
-import com.popop.lifesimulator.data.models.world.GameState
+import com.popop.lifesimulator.data.database.entity.GameStateEntity
 import kotlinx.coroutines.flow.Flow
 
 /**
  * Repository for game state data
  */
 class GameStateRepository(private val gameStateDao: GameStateDao) {
-    val gameState: Flow<GameState> = gameStateDao.getGameState()
+    val gameState: Flow<GameStateEntity?>? = null
 
-    suspend fun getGameState(): GameState? = gameStateDao.getGameStateValue()
+    suspend fun getGameState(): GameStateEntity? = gameStateDao.getBySlot(1)
 
-    suspend fun updateGameState(gameState: GameState) = gameStateDao.update(gameState)
+    suspend fun updateGameState(gameState: GameStateEntity) = gameStateDao.insert(gameState)
 }

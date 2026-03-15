@@ -8,9 +8,9 @@ import kotlinx.coroutines.flow.Flow
  * Repository for quest data
  */
 class QuestRepository(private val questDao: QuestDao) {
-    val allQuests: Flow<List<QuestEntity>> = questDao.getAll()
+    val allQuests: Flow<List<QuestEntity>>? = null
 
-    suspend fun getQuestById(id: Long): QuestEntity? = questDao.getById(id)
+    suspend fun getQuestById(id: String): QuestEntity? = questDao.getById(id)
 
     suspend fun insert(quest: QuestEntity) = questDao.insert(quest)
 
