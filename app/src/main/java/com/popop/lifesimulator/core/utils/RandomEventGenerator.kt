@@ -1,5 +1,7 @@
 package com.popop.lifesimulator.core.utils
 
+import com.popop.lifesimulator.core.events.GameEvent
+import com.popop.lifesimulator.data.models.character.Character
 import kotlin.random.Random
 
 /**
@@ -255,40 +257,6 @@ class RandomEventGenerator {
 }
 
 /**
- * Data class representing a game event.
- */
-data class GameEvent(
-    val id: String,
-    val title: String,
-    val description: String,
-    val category: EventCategory = EventCategory.GENERAL,
-    val rarity: EventRarity = EventRarity.COMMON,
-    val effects: Map<String, Int> = emptyMap(),
-    val requirements: Map<String, Any> = emptyMap(),
-    val choices: List<EventChoice> = emptyList(),
-    val cooldown: Int = 0, // Days before this event can trigger again
-    val isRepeatable: Boolean = true
-)
-
-/**
- * Choice available in an event.
- */
-data class EventChoice(
-    val text: String,
-    val outcome: EventOutcome,
-    val requirements: Map<String, Any> = emptyMap()
-)
-
-/**
- * Outcome of an event choice.
- */
-data class EventOutcome(
-    val message: String,
-    val effects: Map<String, Int> = emptyMap(),
-    val flags: Map<String, Boolean> = emptyMap()
-)
-
-/**
  * Context for event generation.
  */
 data class EventContext(
@@ -298,22 +266,3 @@ data class EventContext(
     val luckModifier: Float = 1.0f,
     val excludeRecent: Boolean = true
 )
-
-/**
- * Event categories.
- */
-enum class EventCategory {
-    GENERAL, SOCIAL, BUSINESS, CRIME, POLITICAL, ROYAL, 
-    DANGER, OPPORTUNITY, ROMANCE, CAREER, ENVIRONMENT, COMMERCE
-}
-
-/**
- * Event rarity levels.
- */
-enum class EventRarity(val weight: Int) {
-    COMMON(100),
-    UNCOMMON(50),
-    RARE(20),
-    EPIC(5),
-    LEGENDARY(1)
-}
