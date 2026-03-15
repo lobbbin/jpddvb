@@ -334,11 +334,8 @@ enum class EndorsementType {
 }
 
 // Results
-enum class RallyResult {
-    object Success : RallyResult() {
-        operator fun invoke(attendance: Int, newPolling: Int) = SuccessData(attendance, newPolling)
-        data class SuccessData(val attendance: Int, val newPolling: Int) : RallyResult()
-    }
+sealed class RallyResult {
+    data class Success(val attendance: Int, val newPolling: Int) : RallyResult()
     object InsufficientFunds : RallyResult()
 }
 
