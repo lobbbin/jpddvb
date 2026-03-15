@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="royal_purple">#6B46C1</color>
+    <color name="royal_purple_light">#8B5CF6</color>
+    <color name="royal_purple_dark">#553C9A</color>
+    
+    <color name="political_blue">#3182CE</color>
+    <color name="business_green">#38A169</color>
+    <color name="crime_red">#E53E3E</color>
+    <color name="career_gold">#D69E2E</color>
+    
+    <color name="primary_background">#1A202C</color>
+    <color name="secondary_background">#2D3748</color>
+    
+    <color name="success_green">#48BB78</color>
+    <color name="warning_yellow">#ECC94B</color>
+    <color name="error_red">#F56565</color>
+    <color name="info_blue">#4299E1</color>
+</resources>
