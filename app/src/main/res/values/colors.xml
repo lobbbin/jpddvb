@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Launcher icon colors -->
+    <color name="ic_launcher_background">#1E40AF</color>
+    <color name="ic_launcher_foreground">#FFFFFF</color>
+
     <color name="royal_purple">#6B46C1</color>
     <color name="royal_purple_light">#8B5CF6</color>
     <color name="royal_purple_dark">#553C9A</color>
